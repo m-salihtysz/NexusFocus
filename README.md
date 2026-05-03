@@ -6,7 +6,7 @@ NexusFocus, kullanıcıların çalışma verimliliğini artırmak için kamera, 
 
 ## 📸 Tanıtım ve Görseller
 Uygulamanın arayüzü, özellikleri ve kullanım detayları hakkında hazırladığımız kapsamlı sunuma buradan ulaşabilirsiniz:
-👉 **[NexusFocus Tanıtım Sunumu (Görseller.pdf)](./Go%CC%88rseller.pdf)**
+👉 **[NexusFocus Tanıtım Sunumu (TanitimSunumu.pdf)](./TanitimSunumu.pdf)**
 
 ---
 
@@ -87,4 +87,4 @@ NexusFocus, **Privacy-First (Önce Gizlilik)** prensibiyle çalışır. Kamera g
 ## ✉️ İletişim
 Geliştirici: **msalihtysz**
 E-posta: [msalihtysz@gmail.com](mailto:msalihtysz@gmail.com)
-GitHub: [msalihtysz](https://github.com/msalihtysz)
+GitHub: [msalihtysz](https://github.com/m-salihtysz)
