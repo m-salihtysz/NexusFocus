@@ -108,8 +108,8 @@ const modules = [
 const stats = [
   { value: "%94", label: "Odak iyilestirme orani" },
   { value: "10K+", label: "Hibrit sinyal noktasi/saat" },
-  { value: "3", label: "Modul (Ogrenci/Kurumsal/Freelance)" },
-  { value: "0", label: "Saklanan ham kamera frame" },
+  { value: "3", label: "Farklı Verimlilik Modülü" },
+  { value: "0", label: "Kaydedilen Kamera Verisi" },
 ];
 
 export default function LandingPage({ onStart, onLogin, onOpenPrivacy }) {
@@ -170,7 +170,9 @@ export default function LandingPage({ onStart, onLogin, onOpenPrivacy }) {
                   className="rounded-2xl border border-slate-800 bg-slate-950/60 p-3"
                 >
                   <p className="text-xl font-bold text-white">{stat.value}</p>
-                  <p className="mt-1 text-xs text-slate-400">{stat.label}</p>
+                  <p className="mt-1 text-[10px] leading-tight text-slate-400 sm:text-xs">
+                    {stat.label}
+                  </p>
                 </div>
               ))}
             </div>
