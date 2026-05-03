@@ -3,7 +3,7 @@ import { Github, Mail, ShieldCheck } from "lucide-react";
 export default function Footer({ onOpenPrivacy }) {
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-12 border-t border-slate-800 bg-slate-950/80">
+    <footer className="border-t transition-colors duration-300" style={{ borderColor: 'var(--border-color)', backgroundColor: 'var(--bg-surface-glass)' }}>
       <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 md:grid-cols-4 md:px-8">
         <div>
           <p className="text-base font-semibold text-white">NexusFocus</p>
@@ -39,15 +39,17 @@ export default function Footer({ onOpenPrivacy }) {
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Iletisim</p>
           <ul className="mt-2 space-y-1 text-xs text-slate-300">
             <li className="inline-flex items-center gap-1">
-              <Mail size={12} /> destek@nexusfocus.example
+              <Mail size={12} /> 
+              <a href="mailto:msalihtysz@gmail.com" className="hover:underline">msalihtysz@gmail.com</a>
             </li>
             <li className="inline-flex items-center gap-1">
-              <Github size={12} /> github.com/nexusfocus
+              <Github size={12} /> 
+              <a href="https://github.com/m-salihtysz/NexusFocus" target="_blank" rel="noopener noreferrer" className="hover:underline">github.com/msalihtysz</a>
             </li>
           </ul>
         </div>
       </div>
-      <div className="border-t border-slate-800 px-4 py-3 text-center text-xs text-slate-500 md:px-8">
+      <div className="border-t px-4 py-3 text-center text-xs text-slate-500 md:px-8" style={{ borderColor: 'var(--border-color)' }}>
         © {year} NexusFocus. Tum haklari saklidir.
       </div>
     </footer>

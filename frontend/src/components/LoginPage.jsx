@@ -27,21 +27,6 @@ const tabs = [
     ],
   },
   {
-    id: "kurumsal",
-    page: "enterprise",
-    label: "Kurumsal",
-    icon: Building2,
-    color: "from-emerald-500 to-cyan-500",
-    headline: "Kurumsal Calisan Girisi",
-    description:
-      "Yalnizca sirket yoneticisinin calisan listesine ekledigi Google e-postasi ile giris yapilir; liste disindaki hesaplar kabul edilmez.",
-    bullets: [
-      "E-posta admin tarafindan 'Calisanlar'a eklenmeli",
-      "Ergonomi + yorgunluk takibi",
-      "Anonim ekip metrikleri (isim/ozet yok)",
-    ],
-  },
-  {
     id: "freelance",
     page: "freelance",
     label: "Freelance",
@@ -54,6 +39,21 @@ const tabs = [
       "Fare/ekran kaosu ve flow metrikleri",
       "Kamera ile mimik ve yorgunluk (istege bagli)",
       "Flow panelleri ve AI onerileri",
+    ],
+  },
+  {
+    id: "kurumsal",
+    page: "enterprise",
+    label: "Kurumsal",
+    icon: Building2,
+    color: "from-emerald-500 to-cyan-500",
+    headline: "Kurumsal Calisan Girisi",
+    description:
+      "Yalnizca sirket yoneticisinin calisan listesine ekledigi Google e-postasi ile giris yapilir; liste disindaki hesaplar kabul edilmez.",
+    bullets: [
+      "E-posta admin tarafindan 'Calisanlar'a eklenmeli",
+      "Ergonomi + yorgunluk takibi",
+      "Anonim ekip metrikleri (isim/ozet yok)",
     ],
   },
   {

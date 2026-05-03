@@ -1,4 +1,4 @@
-import { LogIn, LogOut, Menu, X } from "lucide-react";
+import { LogIn, LogOut, Menu, Moon, Sun, X } from "lucide-react";
 
 const PUBLIC_ITEMS = [
   { id: "landing", label: "Ana Sayfa" },
@@ -10,8 +10,8 @@ const PUBLIC_ITEMS = [
 const PRIVATE_ITEMS = [
   { id: "home", label: "Dashboard" },
   { id: "student", label: "Ogrenci" },
-  { id: "enterprise", label: "Kurumsal" },
   { id: "freelance", label: "Freelance" },
+  { id: "enterprise", label: "Kurumsal" },
 ];
 
 export default function Navbar({
@@ -21,25 +21,26 @@ export default function Navbar({
   onSelectPage,
   packageLabel,
   isAuthenticated,
-  /** Doluysa giris sonrasi tek modul navigasyonu (Dashboard / diger moduller gizlenir). */
   authNavItems,
-  /** Kimlik dogrulandiysa logo tiklamasi bu sayfaya gider; yoksa onceki davranis. */
   brandTargetPage,
   onLogout,
+  colorMode,
+  onToggleColorMode,
 }) {
   const privateNav =
     isAuthenticated && authNavItems !== undefined ? authNavItems : PRIVATE_ITEMS;
   const items = isAuthenticated ? privateNav : PUBLIC_ITEMS;
 
   return (
-    <header className="sticky top-0 z-30 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b transition-colors duration-300" style={{ borderColor: 'var(--border-color)', backgroundColor: 'var(--bg-surface-glass)', backdropFilter: 'blur(8px)' }}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
         <button
           type="button"
           onClick={() =>
             onSelectPage(isAuthenticated ? brandTargetPage || "home" : "landing")
           }
-          className="text-left text-lg font-bold text-white"
+          className="text-left text-lg font-bold"
+          style={{ color: 'var(--text-primary)' }}
         >
           NexusFocus
           <span
@@ -71,6 +72,16 @@ export default function Navbar({
             </button>
           ))}
 
+          <button
+            type="button"
+            onClick={onToggleColorMode}
+            className="ml-4 p-2 rounded-xl border transition-colors"
+            style={{ borderColor: 'var(--border-color)', color: 'var(--text-secondary)' }}
+            aria-label="Toggle color mode"
+          >
+            {colorMode === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+
           {isAuthenticated ? (
             <button
               type="button"
@@ -99,7 +110,8 @@ export default function Navbar({
         <button
           type="button"
           onClick={onToggleMenu}
-          className="inline-flex items-center rounded-lg border border-slate-700 p-2 text-slate-200 md:hidden"
+          className="inline-flex items-center rounded-lg border p-2 md:hidden"
+          style={{ borderColor: 'var(--border-color)', color: 'var(--text-secondary)' }}
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X size={18} /> : <Menu size={18} />}
@@ -107,8 +119,19 @@ export default function Navbar({
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-slate-800 bg-slate-900/95 px-4 py-3 md:hidden">
+        <div className="border-t border-slate-800 px-4 py-3 md:hidden" style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-color)' }}>
           <div className="flex flex-col gap-2">
+            <div className="flex items-center justify-between py-2 border-b" style={{ borderColor: 'var(--border-color)' }}>
+              <span className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>Tema</span>
+              <button
+                type="button"
+                onClick={onToggleColorMode}
+                className="p-2 rounded-lg border transition-colors"
+                style={{ borderColor: 'var(--border-color)', color: 'var(--text-secondary)' }}
+              >
+                {colorMode === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+              </button>
+            </div>
             {items.map((item) => (
               <button
                 key={`${item.id}-${item.label}`}

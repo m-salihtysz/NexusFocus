@@ -84,16 +84,6 @@ const modules = [
     ],
   },
   {
-    icon: Building2,
-    title: "Kurumsal",
-    color: "from-emerald-500 to-cyan-500",
-    points: [
-      "Anonimlestirilmis ekip dashboard",
-      "Admin panel ID + calisan yonetimi",
-      "Ergonomi ve yorgunluk uyarilari",
-    ],
-  },
-  {
     icon: MousePointer2,
     title: "Freelance",
     color: "from-amber-500 to-rose-500",
@@ -101,6 +91,16 @@ const modules = [
       "Flow modu ve teslim tahmini",
       "Fare/ekran kaosu tespiti",
       "Bilissel donma alarm sistemi",
+    ],
+  },
+  {
+    icon: Building2,
+    title: "Kurumsal",
+    color: "from-emerald-500 to-cyan-500",
+    points: [
+      "Anonimlestirilmis ekip dashboard",
+      "Admin panel ID + calisan yonetimi",
+      "Ergonomi ve yorgunluk uyarilari",
     ],
   },
 ];

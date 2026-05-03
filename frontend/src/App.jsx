@@ -105,6 +105,9 @@ export default function App() {
   const [authLoginKind, setAuthLoginKind] = useState(() =>
     typeof sessionStorage !== "undefined" ? sessionStorage.getItem(AUTH_LOGIN_KIND_KEY) : null
   );
+  const [colorMode, setColorMode] = useState(() => 
+    typeof localStorage !== "undefined" ? (localStorage.getItem("nexusfocus.colorMode") || "dark") : "dark"
+  );
   const toast = useToast();
   const wsUrl = useMemo(() => "ws://localhost:8000/ws/focus", []);
 
@@ -449,6 +452,13 @@ export default function App() {
   }, [activePage]);
 
   useEffect(() => {
+    document.documentElement.dataset.colorMode = colorMode;
+    localStorage.setItem("nexusfocus.colorMode", colorMode);
+  }, [colorMode]);
+
+  const toggleColorMode = () => setColorMode(prev => (prev === "dark" ? "light" : "dark"));
+
+  useEffect(() => {
     if (!googleUser || isEnterpriseAdminControlPanel) return undefined;
     const intervalId = window.setInterval(() => {
       const score = focus.hybrid_score || focus.focus_score;
@@ -475,8 +485,10 @@ export default function App() {
   ]);
 
   return (
-    <main className="min-h-screen text-white">
+    <main className="min-h-screen flex flex-col transition-colors duration-300">
       <Navbar
+        colorMode={colorMode}
+        onToggleColorMode={toggleColorMode}
         mobileOpen={mobileMenuOpen}
         onToggleMenu={() => setMobileMenuOpen((prev) => !prev)}
         activePage={activePage}
@@ -533,7 +545,7 @@ export default function App() {
         }}
       />
 
-      <section className="mx-auto max-w-7xl space-y-6 px-4 py-6 md:px-8">
+      <section className="flex-grow mx-auto max-w-7xl w-full space-y-6 px-4 py-6 md:px-8">
         <canvas ref={canvasRef} className="hidden" />
 
         {activePage === "landing" && (
