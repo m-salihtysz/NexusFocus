@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+opencv-python
+mediapipe
+sqlalchemy
+pydantic
+google-auth
+requests
+PyJWT
+python-dotenv
+email-validator
+openai
+tzdata
