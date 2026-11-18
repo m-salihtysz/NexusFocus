@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { apiClient, fetchCurrentUser } from "./lib/authClient";
+import { API_URL, apiClient, fetchCurrentUser } from "./lib/authClient";
 import { recordFocusSession } from "./lib/focusClient";
 
 import { disposeTracker, extractMetricsFromVideo } from "./lib/mediapipeTracker";
@@ -109,7 +109,7 @@ export default function App() {
     typeof localStorage !== "undefined" ? (localStorage.getItem("nexusfocus.colorMode") || "dark") : "dark"
   );
   const toast = useToast();
-  const wsUrl = useMemo(() => "ws://localhost:8000/ws/focus", []);
+  const wsUrl = useMemo(() => `${API_URL.replace(/^http/, "ws")}/ws/focus`, []);
 
   const isEnterpriseAdminControlPanel = useMemo(
     () =>

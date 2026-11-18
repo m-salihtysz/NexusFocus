@@ -6,7 +6,7 @@ const areas = [
     page: "student",
     label: "Ogrenci",
     icon: GraduationCap,
-    color: "from-indigo-500 to-blue-500",
+    color: "bg-indigo-500",
     description: "Anlama, sabitlik ve okuma odakli takip.",
   },
   {
@@ -14,7 +14,7 @@ const areas = [
     page: "enterprise",
     label: "Kurumsal",
     icon: Building2,
-    color: "from-emerald-500 to-cyan-500",
+    color: "bg-emerald-600",
     description: "Ekip ergonomisi, anonim metrikler, admin paneli.",
   },
   {
@@ -22,7 +22,7 @@ const areas = [
     page: "freelance",
     label: "Freelance",
     icon: MousePointer2,
-    color: "from-amber-500 to-rose-500",
+    color: "bg-amber-600",
     description: "Flow modu, fare/ekran kaosu, teslim tahmini.",
   },
 ];
@@ -72,9 +72,9 @@ export default function OnboardingPage({
             className={`relative overflow-hidden rounded-2xl border border-slate-600 bg-slate-900 p-6 ring-2`}
             style={{ boxShadow: "0 0 0 4px var(--accentSoft)" }}
           >
-            <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${area.color}`} />
+            <div className={`absolute inset-x-0 top-0 h-1 ${area.color}`} />
             <div
-              className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${area.color} text-white shadow-lg`}
+              className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${area.color} text-white`}
             >
               <AreaIcon size={22} />
             </div>
@@ -101,10 +101,10 @@ export default function OnboardingPage({
                 style={active ? { boxShadow: "0 0 0 4px var(--accentSoft)" } : undefined}
               >
                 <div
-                  className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${item.color}`}
+                  className={`absolute inset-x-0 top-0 h-1 ${item.color}`}
                 />
                 <div
-                  className={`inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${item.color} text-white shadow-lg`}
+                  className={`inline-flex h-11 w-11 items-center justify-center rounded-xl ${item.color} text-white`}
                 >
                   <Icon size={20} />
                 </div>

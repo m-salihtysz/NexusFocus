@@ -2,8 +2,10 @@ import axios from "axios";
 
 const TOKEN_KEY = "nexusfocus.access_token";
 
+export const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+
 export const apiClient = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: API_URL,
 });
 
 apiClient.interceptors.request.use((config) => {

@@ -17,3 +17,7 @@ frontend/dist/
 .venv/
 .DS_Store
 .ruff_cache/
+
+frontend/.vite/
+nexusfocus.db
+scratch/

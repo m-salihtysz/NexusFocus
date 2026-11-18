@@ -82,19 +82,19 @@ const AREA_META = {
   ogrenci: {
     heading: "Öğrenci verimliliği",
     tag: "Ders & çalışma",
-    shell: "from-indigo-950/40 via-slate-950 to-slate-950 border-indigo-500/25",
+    shell: "bg-slate-950 border-indigo-500/25",
     kpiAccent: "text-indigo-200",
   },
   kurumsal: {
     heading: "Kurumsal verimlilik",
     tag: "Ergonomi & süreklilik",
-    shell: "from-emerald-950/35 via-slate-950 to-slate-950 border-emerald-500/25",
+    shell: "bg-slate-950 border-emerald-500/25",
     kpiAccent: "text-emerald-200",
   },
   freelance: {
     heading: "Freelance verimliliği",
     tag: "Akış & derin iş",
-    shell: "from-amber-950/30 via-slate-950 to-slate-950 border-amber-500/25",
+    shell: "bg-slate-950 border-amber-500/25",
     kpiAccent: "text-amber-100",
   },
 };
@@ -181,11 +181,11 @@ function MouseTrackPanel({ focus }) {
         ) : null}
       </p>
       <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        <MetricBar label="Hareket hızı" value={speedPct} color="#38bdf8" />
-        <MetricBar label="İmlek kaosu" value={chaos} color="#f59e0b" />
-        <MetricBar label="Hareketsizlik" value={idleBar} color="#94a3b8" />
-        <MetricBar label="Donma / kilitlenme" value={freeze} color="#22d3ee" />
-        <MetricBar label="Sayfa geçişi (5 dk)" value={switchBar} color="#a78bfa" />
+        <MetricBar label="Hareket hızı" value={speedPct} color="#7fb8c4" />
+        <MetricBar label="İmlek kaosu" value={chaos} color="#c9902f" />
+        <MetricBar label="Hareketsizlik" value={idleBar} color="#a8a498" />
+        <MetricBar label="Donma / kilitlenme" value={freeze} color="#5fb8aa" />
+        <MetricBar label="Sayfa geçişi (5 dk)" value={switchBar} color="#8091c2" />
       </div>
       <p className="mt-2 text-[11px] text-slate-500">
         Son 5 dakikada <span className="tabular-nums text-slate-300">{switches}</span> tam URL değişimi
@@ -201,26 +201,26 @@ function MouseTrackPanel({ focus }) {
 function buildBars(area, focus) {
   if (area === "ogrenci") {
     return [
-      { label: "Yorgunluk", value: focus.expression_fatigue, color: "#f87171" },
-      { label: "Gerginlik", value: focus.expression_stress, color: "#fb923c" },
-      { label: "Dağınıklık", value: focus.expression_distraction, color: "#a78bfa" },
-      { label: "Pozitiflik", value: focus.expression_positivity, color: "#4ade80" },
+      { label: "Yorgunluk", value: focus.expression_fatigue, color: "#d9776a" },
+      { label: "Gerginlik", value: focus.expression_stress, color: "#d18568" },
+      { label: "Dağınıklık", value: focus.expression_distraction, color: "#8091c2" },
+      { label: "Pozitiflik", value: focus.expression_positivity, color: "#7fb58f" },
     ];
   }
   if (area === "kurumsal") {
     const screenStrain = clamp(100 - (focus.screen_focus ?? 100));
     return [
-      { label: "Yorgunluk", value: focus.expression_fatigue, color: "#f87171" },
-      { label: "Gerginlik", value: focus.expression_stress, color: "#fb923c" },
-      { label: "Ekran dışı eğilim", value: screenStrain, color: "#fbbf24" },
-      { label: "Postür baskısı", value: focus.posture_shift, color: "#34d399" },
+      { label: "Yorgunluk", value: focus.expression_fatigue, color: "#d9776a" },
+      { label: "Gerginlik", value: focus.expression_stress, color: "#d18568" },
+      { label: "Ekran dışı eğilim", value: screenStrain, color: "#d9a441" },
+      { label: "Postür baskısı", value: focus.posture_shift, color: "#7fb58f" },
     ];
   }
   return [
-    { label: "Yorgunluk", value: focus.expression_fatigue, color: "#f87171" },
-    { label: "Gerginlik", value: focus.expression_stress, color: "#fb923c" },
-    { label: "İmlek kaosu", value: focus.cursor_chaos, color: "#f59e0b" },
-    { label: "Bilişsel donma", value: focus.cognitive_freeze, color: "#22d3ee" },
+    { label: "Yorgunluk", value: focus.expression_fatigue, color: "#d9776a" },
+    { label: "Gerginlik", value: focus.expression_stress, color: "#d18568" },
+    { label: "İmlek kaosu", value: focus.cursor_chaos, color: "#c9902f" },
+    { label: "Bilişsel donma", value: focus.cognitive_freeze, color: "#5fb8aa" },
   ];
 }
 
@@ -245,10 +245,10 @@ export default function ProductivityDashboard({
 
   const aiBorder =
     severity === "alert"
-      ? "border-rose-500/50 bg-rose-950/25 shadow-[0_0_40px_-12px_rgba(244,63,94,0.35)]"
+      ? "border-rose-500/50 bg-rose-950/25 "
       : severity === "warn"
-      ? "border-amber-500/45 bg-amber-950/20 shadow-[0_0_32px_-14px_rgba(245,158,11,0.3)]"
-      : "border-cyan-500/30 bg-slate-900/60 shadow-[0_0_28px_-12px_rgba(34,211,238,0.2)]";
+      ? "border-amber-500/45 bg-amber-950/20 "
+      : "border-cyan-500/30 bg-slate-900/60 ";
 
   const rawLines = [
     instantFeedback,
@@ -262,7 +262,7 @@ export default function ProductivityDashboard({
 
   return (
     <section
-      className={`overflow-hidden rounded-3xl border bg-gradient-to-br p-5 md:p-6 ${meta.shell}`}
+      className={`overflow-hidden rounded-3xl border p-5 md:p-6 ${meta.shell}`}
     >
       <div className="flex flex-wrap items-end justify-between gap-3 border-b border-slate-800/60 pb-4">
         <div>

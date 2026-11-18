@@ -70,8 +70,8 @@ export default function FocusAnalytics({ history, compact = false }) {
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={history} margin={{ top: 4, right: 8, bottom: 0, left: -12 }}>
               <CartesianGrid stroke="rgba(148,163,184,0.12)" strokeDasharray="3 3" />
-              <XAxis dataKey="time" tick={{ fill: "#64748b", fontSize: 9 }} interval="preserveStartEnd" />
-              <YAxis tick={{ fill: "#64748b", fontSize: 9 }} domain={[0, 100]} width={28} />
+              <XAxis dataKey="time" tick={{ fill: "#8a867b", fontSize: 9 }} interval="preserveStartEnd" />
+              <YAxis tick={{ fill: "#8a867b", fontSize: 9 }} domain={[0, 100]} width={28} />
               <Tooltip
                 contentStyle={{
                   background: "rgba(2,6,23,0.92)",
@@ -93,7 +93,7 @@ export default function FocusAnalytics({ history, compact = false }) {
                 type="monotone"
                 dataKey="load"
                 name="Bilissel Yuk"
-                stroke="#fb7185"
+                stroke="#d9776a"
                 strokeWidth={1.5}
                 dot={false}
                 isAnimationActive={false}
@@ -114,12 +114,12 @@ export default function FocusAnalytics({ history, compact = false }) {
               <CartesianGrid stroke="rgba(148,163,184,0.15)" strokeDasharray="3 3" />
               <XAxis
                 dataKey="time"
-                tick={{ fill: "#94a3b8", fontSize: 10 }}
+                tick={{ fill: "#a8a498", fontSize: 10 }}
                 tickMargin={8}
                 interval="preserveStartEnd"
               />
               <YAxis
-                tick={{ fill: "#94a3b8", fontSize: 10 }}
+                tick={{ fill: "#a8a498", fontSize: 10 }}
                 domain={[0, 100]}
                 tickMargin={8}
               />
@@ -129,8 +129,8 @@ export default function FocusAnalytics({ history, compact = false }) {
                   border: "1px solid rgba(30,41,59,1)",
                   borderRadius: 12,
                 }}
-                labelStyle={{ color: "#e2e8f0" }}
-                itemStyle={{ color: "#e2e8f0" }}
+                labelStyle={{ color: "#e1ded6" }}
+                itemStyle={{ color: "#e1ded6" }}
                 formatter={tooltipFormatter}
               />
               <Legend />
@@ -147,7 +147,7 @@ export default function FocusAnalytics({ history, compact = false }) {
                 type="monotone"
                 dataKey="load"
                 name="Bilissel Yuk"
-                stroke="#fb7185"
+                stroke="#d9776a"
                 strokeWidth={2}
                 dot={false}
                 isAnimationActive={false}
@@ -164,12 +164,12 @@ export default function FocusAnalytics({ history, compact = false }) {
               <CartesianGrid stroke="rgba(148,163,184,0.15)" strokeDasharray="3 3" />
               <XAxis
                 dataKey="time"
-                tick={{ fill: "#94a3b8", fontSize: 10 }}
+                tick={{ fill: "#a8a498", fontSize: 10 }}
                 tickMargin={8}
                 interval="preserveStartEnd"
               />
               <YAxis
-                tick={{ fill: "#94a3b8", fontSize: 10 }}
+                tick={{ fill: "#a8a498", fontSize: 10 }}
                 domain={[0, 100]}
                 tickMargin={8}
               />
@@ -179,8 +179,8 @@ export default function FocusAnalytics({ history, compact = false }) {
                   border: "1px solid rgba(30,41,59,1)",
                   borderRadius: 12,
                 }}
-                labelStyle={{ color: "#e2e8f0" }}
-                itemStyle={{ color: "#e2e8f0" }}
+                labelStyle={{ color: "#e1ded6" }}
+                itemStyle={{ color: "#e1ded6" }}
                 formatter={tooltipFormatter}
               />
               <Legend />
@@ -188,7 +188,7 @@ export default function FocusAnalytics({ history, compact = false }) {
                 type="monotone"
                 dataKey="chaos"
                 name="Cursor Chaos"
-                stroke="#f59e0b"
+                stroke="#c9902f"
                 strokeWidth={2}
                 dot={false}
                 isAnimationActive={false}
@@ -197,7 +197,7 @@ export default function FocusAnalytics({ history, compact = false }) {
                 type="monotone"
                 dataKey="blink"
                 name="Blink Rate"
-                stroke="#a78bfa"
+                stroke="#8091c2"
                 strokeWidth={2}
                 dot={false}
                 isAnimationActive={false}

@@ -16,7 +16,8 @@ from backend.auth import (
     issue_access_token,
     verify_google_id_token,
 )
-from backend.database import Base, SessionLocal, engine, ensure_sqlite_user_activity_columns
+from backend.config import settings
+from backend.database import Base, engine, ensure_sqlite_user_activity_columns
 from backend.enterprise_api import EnterpriseAPI, EnterpriseSnapshotCreate
 from backend.focus_engine import FocusEngine
 from backend.models import Employee, Tenant, User
@@ -29,7 +30,7 @@ app = FastAPI(title="NexusFocus Backend", version="0.1.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=settings.cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -256,27 +257,33 @@ def auth_logout(
 
 
 @app.post("/enterprise/snapshots")
-def create_enterprise_snapshot(payload: EnterpriseSnapshotIn) -> dict[str, int]:
-    db: Session = SessionLocal()
-    try:
-        snapshot = enterprise_api.save_snapshot(
-            db,
-            EnterpriseSnapshotCreate(
-                tenant_id=payload.tenant_id,
-                team_id=payload.team_id,
-                focus_score=payload.focus_score,
-                cognitive_load=payload.cognitive_load,
-                blink_rate=payload.blink_rate,
-                gaze_speed=payload.gaze_speed,
-            ),
-        )
-        return {"id": snapshot.id}
-    finally:
-        db.close()
+def create_enterprise_snapshot(
+    payload: EnterpriseSnapshotIn,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+) -> dict[str, int]:
+    # Yalnizca kendi sirketine yazabilir; tenant_id istemciden guvenilmez.
+    if not current_user.tenant_id or payload.tenant_id != current_user.tenant_id:
+        raise HTTPException(status_code=403, detail="Bu sirket icin yetkiniz yok")
+    snapshot = enterprise_api.save_snapshot(
+        db,
+        EnterpriseSnapshotCreate(
+            tenant_id=current_user.tenant_id,
+            team_id=payload.team_id,
+            focus_score=payload.focus_score,
+            cognitive_load=payload.cognitive_load,
+            blink_rate=payload.blink_rate,
+            gaze_speed=payload.gaze_speed,
+        ),
+    )
+    return {"id": snapshot.id}
 
 
 @app.post("/admin/recommendations")
-def get_admin_recommendations(payload: RecommendationIn) -> dict[str, object]:
+def get_admin_recommendations(
+    payload: RecommendationIn,
+    _user: User = Depends(get_current_user),
+) -> dict[str, object]:
     expression_payload = {
         "expression_fatigue": payload.expression_fatigue,
         "expression_stress": payload.expression_stress,
@@ -322,7 +329,13 @@ async def focus_websocket(websocket: WebSocket) -> None:
     try:
         while True:
             payload = await websocket.receive_text()
-            camera_feed: dict[str, Any] = json.loads(payload)
+            try:
+                camera_feed = json.loads(payload)
+                if not isinstance(camera_feed, dict):
+                    raise ValueError("payload must be an object")
+            except ValueError:
+                await websocket.send_json({"error": "invalid payload"})
+                continue
             result = focus_engine.process_camera_feed(camera_feed)
             result["timestamp"] = datetime.now(timezone.utc).isoformat()
             await websocket.send_json(result)

@@ -24,20 +24,21 @@ def get_db():
 
 def verify_google_id_token(id_token: str) -> dict:
     """
-    Verify Google ID token. If GOOGLE_CLIENT_ID is set, the audience is enforced.
-    Otherwise the token is decoded for development without audience check.
+    Verify Google ID token. GOOGLE_CLIENT_ID is required so the audience is always enforced.
     """
     if not id_token:
         raise HTTPException(status_code=400, detail="Missing Google ID token")
 
+    if not settings.google_client_id:
+        raise HTTPException(
+            status_code=500, detail="GOOGLE_CLIENT_ID sunucuda yapilandirilmamis"
+        )
+
     request = google_requests.Request()
     try:
-        if settings.google_client_id:
-            payload = google_id_token.verify_oauth2_token(
-                id_token, request, settings.google_client_id
-            )
-        else:
-            payload = google_id_token.verify_oauth2_token(id_token, request)
+        payload = google_id_token.verify_oauth2_token(
+            id_token, request, settings.google_client_id
+        )
     except ValueError as exc:
         raise HTTPException(status_code=401, detail=f"Invalid Google ID token: {exc}") from exc
 

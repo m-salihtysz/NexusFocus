@@ -65,7 +65,7 @@ export default function PrivacyModal({ open, onClose }) {
           <section>
             <h3 className="text-white">5. Iletisim</h3>
             <p className="mt-2">
-              KVKK kapsamindaki haklarinizi kullanmak icin destek@nexusfocus.example adresine yazabilirsiniz.
+              KVKK kapsamindaki haklarinizi kullanmak icin msalihtysz@gmail.com adresine yazabilirsiniz.
             </p>
           </section>
         </div>

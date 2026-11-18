@@ -5,8 +5,10 @@ NexusFocus, kullanıcıların çalışma verimliliğini artırmak için kamera, 
 ---
 
 ## 📸 Tanıtım ve Görseller
-Uygulamanın arayüzü, özellikleri ve kullanım detayları hakkında hazırladığımız kapsamlı sunuma buradan ulaşabilirsiniz:
-👉 **[NexusFocus Tanıtım Sunumu (TanitimSunumu.pdf)](./TanitimSunumu.pdf)**
+
+![NexusFocus](./docs/showcase.png)
+
+### 📥 [**Detaylı Tanıtım Sunumu (PDF)**](./docs/sunum/SUNUM.pdf)
 
 ---
 

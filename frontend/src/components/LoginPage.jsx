@@ -16,7 +16,7 @@ const tabs = [
     page: "student",
     label: "Ogrenci",
     icon: GraduationCap,
-    color: "from-indigo-500 to-blue-500",
+    color: "bg-indigo-500",
     headline: "Ogrenci Girisi",
     description:
       "Anlama, sabitlik ve ders odakli takip. Sadece kendine ait raporu gorursun.",
@@ -31,7 +31,7 @@ const tabs = [
     page: "freelance",
     label: "Freelance",
     icon: MousePointer2,
-    color: "from-amber-500 to-rose-500",
+    color: "bg-amber-600",
     headline: "Freelance Girisi",
     description:
       "Flow odakli calisma: fare ve ekran sinyalleri agirlikli hibrit skor; bagimsiz calisanlar icin.",
@@ -46,7 +46,7 @@ const tabs = [
     page: "enterprise",
     label: "Kurumsal",
     icon: Building2,
-    color: "from-emerald-500 to-cyan-500",
+    color: "bg-emerald-600",
     headline: "Kurumsal Calisan Girisi",
     description:
       "Yalnizca sirket yoneticisinin calisan listesine ekledigi Google e-postasi ile giris yapilir; liste disindaki hesaplar kabul edilmez.",
@@ -61,7 +61,7 @@ const tabs = [
     page: "enterprise",
     label: "Admin Girisi",
     icon: UserCog,
-    color: "from-amber-500 to-rose-500",
+    color: "bg-amber-600",
     headline: "Sirket Admin Girisi",
     description:
       "Sirket tenant'i olusturma, calisan e-postalarini ekleme ve panel ID; calisanlar 'Kurumsal' sekmesinden girer.",
@@ -106,7 +106,7 @@ export default function LoginPage({
               onClick={() => setActiveTab(item.id)}
               className={`inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm transition ${
                 active
-                  ? `border-transparent bg-gradient-to-r ${item.color} text-white shadow-lg`
+                  ? `border-transparent ${item.color} text-white`
                   : "border-slate-700 bg-slate-900 text-slate-300 hover:border-slate-500"
               }`}
             >
@@ -118,10 +118,7 @@ export default function LoginPage({
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[1.1fr_1fr]">
-        <div className="relative flex flex-col justify-center overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 to-slate-950 p-10">
-          <div
-            className={`absolute -right-20 -top-20 h-56 w-56 rounded-full bg-gradient-to-br ${tab.color} opacity-20 blur-3xl`}
-          />
+        <div className="relative flex flex-col justify-center overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 p-10">
 
           <span className="inline-flex w-fit items-center gap-2 rounded-full border border-cyan-500/40 bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-200">
             <Sparkles size={14} /> {tab.label} alani

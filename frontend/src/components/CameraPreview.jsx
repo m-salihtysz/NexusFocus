@@ -66,11 +66,11 @@ export default function CameraPreview({
         const fresh = metrics && Date.now() - (metrics.detected_at || 0) < 1500;
         if (fresh && metrics.landmarks) {
           drawConnections(ctx, metrics.landmarks, sets.FACE_LANDMARKS_TESSELATION, {
-            color: "rgba(56, 189, 248, 0.18)",
+            color: "rgba(143, 208, 197, 0.18)",
             lineWidth: 1,
           });
           drawConnections(ctx, metrics.landmarks, sets.FACE_LANDMARKS_FACE_OVAL, {
-            color: "rgba(34, 211, 238, 0.95)",
+            color: "rgba(95, 184, 170, 0.95)",
             lineWidth: 2,
           });
           drawConnections(ctx, metrics.landmarks, sets.FACE_LANDMARKS_LEFT_EYE, {
@@ -90,7 +90,7 @@ export default function CameraPreview({
             lineWidth: 2,
           });
           drawConnections(ctx, metrics.landmarks, sets.FACE_LANDMARKS_LIPS, {
-            color: "rgba(244, 114, 182, 0.85)",
+            color: "rgba(222, 162, 138, 0.85)",
             lineWidth: 2,
           });
 

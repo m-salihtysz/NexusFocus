@@ -19,38 +19,38 @@ const features = [
   {
     icon: Eye,
     title: "Goz ve Bakis Takibi",
-    text: "MediaPipe iris izleme ile bakisin ekranda mi yoksa baska yerde mi sorgulanir.",
-    color: "from-cyan-500 to-blue-500",
+    text: "MediaPipe iris izleme ile bakisin ekranda mi yoksa baska yerde mi anlasilir.",
+    color: "bg-cyan-600",
   },
   {
     icon: ScanFace,
     title: "Mimik Analizi",
     text: "Face Mesh blendshape'leri ile yorgunluk, gerginlik, dikkat dagilmasi tespit edilir.",
-    color: "from-fuchsia-500 to-pink-500",
+    color: "bg-fuchsia-600",
   },
   {
     icon: MousePointer2,
     title: "Fare Akisi",
     text: "Imlecin hizi, kaosu ve uzun duraksamalari bilissel donmayi gosterir.",
-    color: "from-amber-500 to-orange-500",
+    color: "bg-amber-600",
   },
   {
     icon: Monitor,
     title: "Ekran ve Pencere Takibi",
     text: "Sekme degisimi, alt+tab sayisi, ekran disinda kalma suresi olculur.",
-    color: "from-emerald-500 to-teal-500",
+    color: "bg-emerald-600",
   },
   {
     icon: Wand2,
     title: "AI Tavsiye",
     text: "OpenAI veya yerel LLM ile gercek zamanli, kullanici tipine ozel oneriler.",
-    color: "from-indigo-500 to-violet-500",
+    color: "bg-indigo-500",
   },
   {
     icon: ShieldCheck,
     title: "KVKK ve Gizlilik",
     text: "Ham kamera goruntusu hicbir sekilde sunucuya gonderilmez veya kaydedilmez.",
-    color: "from-slate-500 to-slate-700",
+    color: "bg-slate-600",
   },
 ];
 
@@ -76,7 +76,7 @@ const modules = [
   {
     icon: GraduationCap,
     title: "Ogrenci",
-    color: "from-indigo-500 to-blue-500",
+    color: "bg-indigo-500",
     points: [
       "Anlama ve sabitlik takibi",
       "Pomodoro uyumlu mola onerisi",
@@ -86,7 +86,7 @@ const modules = [
   {
     icon: MousePointer2,
     title: "Freelance",
-    color: "from-amber-500 to-rose-500",
+    color: "bg-amber-600",
     points: [
       "Flow modu ve teslim tahmini",
       "Fare/ekran kaosu tespiti",
@@ -96,7 +96,7 @@ const modules = [
   {
     icon: Building2,
     title: "Kurumsal",
-    color: "from-emerald-500 to-cyan-500",
+    color: "bg-emerald-600",
     points: [
       "Anonimlestirilmis ekip dashboard",
       "Admin panel ID + calisan yonetimi",
@@ -106,29 +106,26 @@ const modules = [
 ];
 
 const stats = [
-  { value: "%94", label: "Odak iyilestirme orani" },
-  { value: "10K+", label: "Hibrit sinyal noktasi/saat" },
-  { value: "3", label: "Farklı Verimlilik Modülü" },
-  { value: "0", label: "Kaydedilen Kamera Verisi" },
+  { value: "4", label: "Sinyal kaynağı: göz, mimik, fare, ekran" },
+  { value: "3", label: "Çalışma profili: öğrenci, freelance, kurumsal" },
+  { value: "0", label: "Sunucuya gönderilen kamera karesi" },
 ];
 
 export default function LandingPage({ onStart, onLogin, onOpenPrivacy }) {
   return (
     <div className="space-y-20">
       {/* HERO */}
-      <section className="relative overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 p-8 md:p-12">
-        <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-cyan-500/15 blur-3xl" />
-        <div className="absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-fuchsia-500/10 blur-3xl" />
+      <section className="relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 p-8 md:p-12">
 
         <div className="relative grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-cyan-500/40 bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-200">
               <Sparkles size={14} />
-              Yeni Nesil Bilissel Verimlilik Platformu
+              Bilişsel verimlilik platformu
             </span>
             <h1 className="mt-6 text-4xl font-bold leading-tight text-white md:text-5xl">
               Yuz, goz, fare ve mimiklerinden
-              <span className="block bg-gradient-to-r from-cyan-300 to-fuchsia-300 bg-clip-text text-transparent">
+              <span className="block text-cyan-300">
                 gercek odak skorunu cikarir.
               </span>
             </h1>
@@ -142,7 +139,7 @@ export default function LandingPage({ onStart, onLogin, onOpenPrivacy }) {
               <button
                 type="button"
                 onClick={onStart}
-                className="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/30 transition hover:bg-cyan-400"
+                className="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400"
               >
                 Hemen Basla
                 <ArrowRight size={16} />
@@ -163,7 +160,7 @@ export default function LandingPage({ onStart, onLogin, onOpenPrivacy }) {
               </button>
             </div>
 
-            <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+            <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3">
               {stats.map((stat) => (
                 <div
                   key={stat.label}
@@ -201,10 +198,7 @@ export default function LandingPage({ onStart, onLogin, onOpenPrivacy }) {
                 className="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 p-5 transition hover:border-slate-600"
               >
                 <div
-                  className={`absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br ${feature.color} opacity-15 blur-2xl transition group-hover:opacity-30`}
-                />
-                <div
-                  className={`inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${feature.color} text-white shadow-md`}
+                  className={`inline-flex h-10 w-10 items-center justify-center rounded-xl ${feature.color} text-white`}
                 >
                   <Icon size={18} />
                 </div>
@@ -261,10 +255,10 @@ export default function LandingPage({ onStart, onLogin, onOpenPrivacy }) {
                 className="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 p-6"
               >
                 <div
-                  className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${mod.color}`}
+                  className={`absolute inset-x-0 top-0 h-1 ${mod.color}`}
                 />
                 <div
-                  className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${mod.color} text-white shadow-lg`}
+                  className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${mod.color} text-white`}
                 >
                   <Icon size={20} />
                 </div>
@@ -284,7 +278,7 @@ export default function LandingPage({ onStart, onLogin, onOpenPrivacy }) {
       </section>
 
       {/* CTA */}
-      <section className="rounded-3xl border border-cyan-700/40 bg-gradient-to-br from-cyan-950 via-slate-950 to-slate-900 p-10 text-center">
+      <section className="rounded-3xl border border-cyan-700/40 bg-cyan-950 p-10 text-center">
         <LineChart size={36} className="mx-auto text-cyan-300" />
         <h2 className="mt-4 text-3xl font-bold text-white">
           Odagini olcmeden iyilestiremezsin.
@@ -296,7 +290,7 @@ export default function LandingPage({ onStart, onLogin, onOpenPrivacy }) {
           <button
             type="button"
             onClick={onStart}
-            className="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/30 hover:bg-cyan-400"
+            className="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-6 py-3 text-sm font-semibold text-slate-950 hover:bg-cyan-400"
           >
             Hemen Basla
             <ArrowRight size={16} />
@@ -317,7 +311,7 @@ export default function LandingPage({ onStart, onLogin, onOpenPrivacy }) {
 function HeroMockup() {
   return (
     <div className="relative">
-      <div className="rounded-3xl border border-slate-800 bg-slate-950 p-5 shadow-2xl">
+      <div className="rounded-3xl border border-slate-800 bg-slate-950 p-5 ">
         <div className="flex items-center gap-2">
           <span className="h-3 w-3 rounded-full bg-rose-500/70" />
           <span className="h-3 w-3 rounded-full bg-amber-500/70" />
@@ -333,7 +327,6 @@ function HeroMockup() {
 
         <div className="mt-4 flex gap-3">
           <div className="relative aspect-video w-3/5 overflow-hidden rounded-xl border-2 border-emerald-400 bg-slate-900">
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/15 via-transparent to-fuchsia-500/15" />
             <div className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-emerald-500/85 px-2 py-1 text-[10px] font-semibold text-emerald-50">
               <CheckCircle2 size={10} />
               Yuz algilandi
